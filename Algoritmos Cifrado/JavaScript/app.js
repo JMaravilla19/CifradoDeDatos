@@ -24,8 +24,29 @@ window.onload = function(){
 
 }//ON LOAD
 
+// funcion para procesar la clave1 de algoritmo DEL CESAR
+function processClave1(){
+	
+	
+	let clave1_1 = document.getElementById('clave1').value;
+
+	clave1_1 = Number.parseInt(clave1_1);
+	console.log(clave1_1);
+
+	if ( !clave1_1 ){
+		
+	alert("Ingresa Un Numero");
+	return false;
+	
+	}else{
+		return clave1_1;
+	}
+	
+}
+
 // Funcion CIFRADO CESAR
 function cifradoCesar(){
+	clave1= processClave1();
 	console.log("Clickeaste el boton");
 	console.log("Update testing")
 }
