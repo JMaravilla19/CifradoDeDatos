@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos de Cifrado</title>
+</head>
+
+<!-- Aqui se liga el archivo JavaScript con HTML -->
+<script src="JavaScript/app.js"></script>
+
+<body> 
+     <!--ENCABEZADO  -->
+    <header>
+        <a href="/index.html"> <h1>Algoritmos de cifrado</h1> </a>
+
+    </header>
+
+    <!-- Aqui inicia el contenido principal -->
+    <main>
+        <!-- Aqui inicia la seccion ALGORITMO DEL CESAR -->
+        <section>
+              
+            <h2>Algoritmo del Cesar</h2>
+            <!-- FORMULARIO algoritmo CESAR -->
+            <form>
+                <!-- CAMPOS formulario -->
+                <fieldset>
+                    <legend>Cifra y descifra con algoritmo del Cesar </legend>
+
+                    <!-- CAMPO Para ingresar clave numerica -->
+                    <div>
+                        <label>Clave</label>
+                        <input type="number" placeholder="Cantidad a recorrer" id="clave1">
+                    </div>
+
+                    <!-- Campo para seleccionar IZQUIERDA O DERECHA -->
+                    <div>
+                        <label>Izquierda</label>
+                        <input type="radio" name="izqDer" value="izquierda" id="izq">
+                        <label>Derecha</label>
+                        <input type="radio" name="izqDer" value="derecha" id="der">
+                    </div>
+
+                    <!-- ESPACIO para el mensaje a CIFRAR / DESCIFRAR -->
+                    <div>
+                        <label>Mensaje</label>
+                        <textarea placeholder="Ingresa tu mensaje" id="mensaje1"></textarea>
+    
+                    </div>
+                    
+                    <!-- BOTON CIFRAR CESAR-->
+                    <div>
+                        <input type="button" value="Cifrar" id="Cifrado_Cesar">
+                    </div>
+
+                    <!-- BOTON DESCIFRAR CESAR -->
+                    <div>
+                        <input type="button" value="Descifrar" id="Desc_Cesar">
+                    </div>
+
+                    <!-- Aqui se mostrara el MENSAJE resultado de hacer click en los botones CESAR -->
+                    <div>
+                        <h3>Resultado: </h3> <p id="R_Cesar">Resultado</p>
+                    </div>
+
+                </fieldset>
+
+            </form>  
+            
+        </section> <!-- FINAL SECCION de algoritmo CESAR -->
+        
+        <!-- SECCION  algoritmo POLYBIOS -->
+        <section> 
+            <h2> Algoritmo Polybios</h2>
+            <!-- INICO FORMULARIO POLYBIOS -->
+            <form>
+                <!-- CAMPOS formulario-->
+                <fieldset>
+                    <legend>Cifra y descifra con algoritmo Polybios </legend>
+
+                    <!-- ESPACIO para el mensaje a CIFRAR / DESCIFRAR -->
+                    <div>
+                        <label>Mensaje</label>
+                        <textarea placeholder="Ingresa tu mensaje" id="mensaje2"></textarea>
+    
+                    </div>
+                    <!-- BOTON CIFRAR POLYBIOS-->
+                    <div>
+                        <input type="button" value="Cifrar" id="Cifrado_Poly">
+                    </div>
+
+                    <!-- BOTON DESCIFRAR POLYBIOS -->
+                    <div>
+                        <input type="button" value="Descifrar" id="Desc_Poly">
+                    </div>
+
+                    <!-- Aqui se mostrara el MENSAJE resultado de hacer click en los botones -->
+                    <div>
+                        <h3>Resultado: </h3> <p id="R_Polybios">Resultado</p>
+                    </div>
+
+                </fieldset>
+
+            </form> 
+        </section> <!-- FINAL SECCION de algoritmo POLYBIOS -->
+
+        <!-- Aqui inicia la seccion ALGORITMO VIGENERE -->
+        <section> 
+            <h2> Algoritmo Vigenere</h2>
+
+            <!-- INICO FORMULARIO VIGENERE -->
+            <form>
+                <!-- CAMPOS formulario-->
+                <fieldset>
+                    <legend>Cifra y descifra con algoritmo Vigenere </legend>
+
+                    <!-- CAMPO Para ingresar clave TEXTUAL -->
+                    <div>
+                        <label>Clave</label>
+                        <input type="text" placeholder="Clave secreta">
+                    </div>
+
+                     <!-- ESPACIO para el mensaje a CIFRAR / DESCIFRAR -->
+                    <div>
+                        <label>Mensaje</label>
+                        <textarea placeholder="Ingresa tu mensaje" id="mensaje3"></textarea>
+    
+                    </div>
+                    
+                    <!-- BOTON CIFRAR VIGENERE-->
+                    <div>
+                        <input type="button" value="Cifrar" id="Cifrado_Ven">
+                    </div>
+
+                    <!-- BOTON DESCIFRAR VIGENERE-->
+                    <div>
+                        <input type="button" value="Descifrar" id="Desc_Ven">
+                    </div>
+
+                    <!-- Aqui se mostrara el MENSAJE resultado de hacer click en los botones -->
+                    <div>
+                        <h3>Resultado: </h3> <p id="R_Vigenere">Resultado</p>
+                    </div>
+
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Ultima seccion de la pagina, suele ir la frase derechos reservados y datos de contacto -->
+    <footer>
+        <p>Todos los derechos reservados. Juan Maravilla - Lorena Guadarrama - Alejandro Navarro</p>
+    </footer>
+    
+</body>
+</html>
