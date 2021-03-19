@@ -1,3 +1,7 @@
+//Variables Globales Algoritmo Cesar
+let clave1,  izq_der, mensaje1;
+
+// Una vez que cargue el contenido de la pagina web, se ejecuta esto
 window.onload = function(){
 	//Evento que determina si se hizo click en el boton de CIFRADO de CESAR
 	document.getElementById('Cifrado_Cesar').addEventListener("click", cifradoCesar);
@@ -20,28 +24,32 @@ window.onload = function(){
 
 }//ON LOAD
 
-
+// Funcion CIFRADO CESAR
 function cifradoCesar(){
 	console.log("Clickeaste el boton");
 	console.log("Update testing")
 }
-
+// Funcion DESCIFRADO CESAR
 function desCesar(){
 	console.log("Clickeaste el boton");
 }
 
+// Funcion CIFRADO POLYBIOS
 function cifradoPoly(){
 	console.log("Clickeaste el boton");
 }
 
+// Funcion DESCIFRADO POLYBIOS
 function DesPoly(){
 	console.log("Clickeaste el boton");
 }
 
+// Funcion CIFRADO VIGENERE
 function cifradoVen(){
 	console.log("Clickeaste el boton");
 }
 
+// Funcion DESCIFRADO VIGENERE
 function desVen(){
 	console.log("Clickeaste el boton");
 }
