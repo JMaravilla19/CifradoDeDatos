@@ -1,8 +1,9 @@
-# CifradoDeDatos
+# Cifrado de Datos
 
-Proyecto escolar de cifrado de datos
+## Proyecto escolar
 
 Contiene los siguientes algoritmos de cifrado
-* Cesar
-* Plybios
-* Vigenere
+
+- Cesar
+- Plybios
+- Vigenere
