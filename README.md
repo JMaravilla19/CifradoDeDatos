@@ -1,6 +1,6 @@
 # Cifrado de Datos
 
-## Proyecto escolar
+## Proyecto escolar 📖
 
 Contiene los siguientes algoritmos de cifrado
 
