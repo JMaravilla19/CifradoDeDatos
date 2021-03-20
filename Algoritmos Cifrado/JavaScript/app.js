@@ -1,3 +1,10 @@
+//Objeto con Abecedarios, al derecho y al reves
+let abecedario = {
+	abc: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+
+	zyx: ['z', 'y','x','w','v','u','t','s','r','q','p','o','n','m','l','k','j','i','h','g','f','e','d','c','b','a']
+};
+
 //Variables Globales Algoritmo Cesar
 let clave1,  izq_der, mensaje1;
 
@@ -27,16 +34,13 @@ window.onload = function(){
 // funcion para procesar la clave1 de algoritmo DEL CESAR
 function processClave1(){
 	
-	
 	let clave1_1 = document.getElementById('clave1').value;
-
 	clave1_1 = Number.parseInt(clave1_1);
-	console.log(clave1_1);
 
+	//Validar si el ususario ingreso una clave para algoritmo CESAR
 	if ( !clave1_1 ){
-		
 	alert("Ingresa Un Numero");
-	return false;
+	location.reload();
 	
 	}else{
 		return clave1_1;
@@ -44,11 +48,18 @@ function processClave1(){
 	
 }
 
+// Funcion para determinar si el ususario quiere recorrer el archivo a la izquierda o derecha
+function validarIzquierdaDerecha(){
+	
+} 
+
 // Funcion CIFRADO CESAR
 function cifradoCesar(){
+	
 	clave1= processClave1();
+	console.log(clave1);
+
 	console.log("Clickeaste el boton");
-	console.log("Update testing")
 }
 // Funcion DESCIFRADO CESAR
 function desCesar(){
