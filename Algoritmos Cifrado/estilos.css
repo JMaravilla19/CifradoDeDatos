@@ -1,6 +1,7 @@
 /*PRINCIPALES*/
 
 :root {
+    
     --blanco: #ffffff;
     --negro: #212121;
     --amarillo: #ffc107;
@@ -86,6 +87,7 @@ body {
 
 .boton:hover {
     cursor: pointer;
+    background: var(--gris);
 }
 
 .boton-naranja {
@@ -128,8 +130,9 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Aqui cambia la letra */
 .campo label {
-    color: var(--blanco);
+    color: var(--azul-obscuro);
     font-weight: 700;
     margin-bottom: .5rem;
     display: block;

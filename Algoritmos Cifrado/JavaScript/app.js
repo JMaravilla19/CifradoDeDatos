@@ -38,7 +38,7 @@ function processClave1(){
 	clave1_1 = Number.parseInt(clave1_1);
 
 	//Validar si el ususario ingreso una clave para algoritmo CESAR
-	if ( !clave1_1 ){
+	if ( isNaN(clave1_1)){
 	alert("Ingresa Un Numero");
 	location.reload();
 	
@@ -48,10 +48,33 @@ function processClave1(){
 	
 }
 
-// Funcion para determinar si el ususario quiere recorrer el archivo a la izquierda o derecha
+// Funcion para determinar si el ususario quiere recorrer el abecedario a la izquierda o derecha, si no se selecciona una opcion, arroja TypeError
 function validarIzquierdaDerecha(){
+	let izq_der_1 = document.querySelector('input[name="izqDer"]:checked').value;
 	
+	return izq_der_1;
 } 
+
+//Funcion para procesar mensaje de CIFRADO de Cesar
+function procesaMensajeCesar(clave, lado){
+ 	let mensaje1_1 = 	document.getElementById('mensaje1').value
+	
+	 if(mensaje1_1==="" || mensaje1_1.length ===0){
+		alert("Ingresa un mensaje");
+		location.reload();
+	 }
+else {
+
+	if (lado === 'izquierda'){
+		console.log(mensaje1_1);
+
+	}else if(lado === 'derecha'){
+		console.log(mensaje1_1);
+	}
+
+} 
+
+}
 
 // Funcion CIFRADO CESAR
 function cifradoCesar(){
@@ -59,7 +82,10 @@ function cifradoCesar(){
 	clave1= processClave1();
 	console.log(clave1);
 
-	console.log("Clickeaste el boton");
+	izq_der = validarIzquierdaDerecha();
+	console.log(izq_der);
+	
+	procesaMensajeCesar(clave1,izq_der);
 }
 // Funcion DESCIFRADO CESAR
 function desCesar(){
