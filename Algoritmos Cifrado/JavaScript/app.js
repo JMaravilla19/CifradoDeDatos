@@ -50,16 +50,30 @@ function processClave1(){
 
 // Funcion para determinar si el ususario quiere recorrer el abecedario a la izquierda o derecha, si no se selecciona una opcion, arroja TypeError
 function validarIzquierdaDerecha(){
-	let izq_der_1 = document.querySelector('input[name="izqDer"]:checked').value;
+	var radios = document.getElementsByName("izqDer");
+    var radio_valido = false;
+
+    var i = 0;
+    while (!radio_valido && i < radios.length) {
+        if (radios[i].checked){
+			radio_valido = document.querySelector('input[name="izqDer"]:checked').value;
+		}
+        i++;        
+    }
+
+    if (!radio_valido){
+		alert("Must check some option!");
+		location.reload();
+	}     
+	return radio_valido;
 	
-	return izq_der_1;
 } 
 
 //Funcion para procesar mensaje de CIFRADO de Cesar
 function procesaMensajeCesar(clave, lado){
  	let mensaje1_1 = 	document.getElementById('mensaje1').value
 	
-	 if(mensaje1_1==="" || mensaje1_1.length ===0){
+	 if(mensaje1_1===""){
 		alert("Ingresa un mensaje");
 		location.reload();
 	 }
