@@ -62,7 +62,7 @@ function validarIzquierdaDerecha(){
     }
 
     if (!radio_valido){
-		alert("Must check some option!");
+		alert("Debes elegir una opcion!");
 		location.reload();
 	}     
 	return radio_valido;
@@ -72,7 +72,12 @@ function validarIzquierdaDerecha(){
 //Funcion para procesar mensaje de CIFRADO de Cesar
 function procesaMensajeCesar(clave, lado){
  	let mensaje1_1 = 	document.getElementById('mensaje1').value
-	
+	 mensaje1_1= mensaje1_1.toLowerCase();
+	 mensaje1_1 = mensaje1_1.split(" ").join('');
+	clave = clave - 1;
+	let temp;
+	let mensajeCifrado;
+
 	 if(mensaje1_1===""){
 		alert("Ingresa un mensaje");
 		location.reload();
@@ -80,10 +85,15 @@ function procesaMensajeCesar(clave, lado){
 else {
 
 	if (lado === 'izquierda'){
-		console.log(mensaje1_1);
+
+		for (let i=0; i< mensaje1_1.length; i++){
+			 temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
+			 mensajeCifrado += abecedario.abc[temp + clave];
+		}
+		console.log(mensajeCifrado);
 
 	}else if(lado === 'derecha'){
-		console.log(mensaje1_1);
+		console.log(mensaje1_1.length);
 	}
 
 } 
