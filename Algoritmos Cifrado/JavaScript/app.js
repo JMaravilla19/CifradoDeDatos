@@ -66,6 +66,7 @@ function validarIzquierdaDerecha(){
 function procesaMensajeCesar(clave, lado){
  	let mensaje1_1 = 	document.getElementById('mensaje1').value
 	let letraAscii;
+	let cifrado=[];
 	 //Texto ingresado por ususario
 	 mensaje1_1 = mensaje1_1.toLowerCase().split(" ");
 
@@ -79,24 +80,29 @@ function procesaMensajeCesar(clave, lado){
 			console.log(mensaje1_1);
 
 			for ( i = 0; i < mensaje1_1.length; i++){
+				for ( let j=0; j < mensaje1_1[i].length; j++ ){
 
-				letraAscii = mensaje1_1[i].split("").charCodeAt(0);
+					console.log(mensaje1_1[i].charCodeAt(j));
+					letraAscii = mensaje1_1[i].charCodeAt(j);
 
-				if(letraAscii >= 97 && letraAscii <= 122){
-							
-					if(letraAscii + clave > 122){
-						letraAscii = 97 + (letraAscii - 122) + clave - 1;
-					}
-					
-					else{
-						letraAscii = letraAscii + clave;
-					}
-					
-				}//IF
+					if(letraAscii >= 97 && letraAscii <= 122){
+								
+						if(letraAscii + clave > 122){
+							letraAscii = 97 + (letraAscii - 122) + (clave - 1);
+						}
+						
+						else{
+							letraAscii = letraAscii + (clave -1);
+						}
+						
+					}//IF
+
+					 cifrado.push(String.fromCharCode(letraAscii));
+				}
+			
 	
-			let cifrado = String.fromCharCode(letraAscii);
 			console.log(`Variable cifrado: ${cifrado}`);
-			return cifrado;
+			return cifrado.join('');
 			}//FOR
 
 		}else if(lado === 'izquierda'){
