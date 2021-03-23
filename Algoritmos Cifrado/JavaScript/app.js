@@ -76,7 +76,7 @@ function procesaMensajeCesar(clave, lado){
 	 mensaje1_1 = mensaje1_1.split(" ").join('');
 	clave = clave - 1;
 	let temp;
-	let mensajeCifrado;
+	
 
 	 if(mensaje1_1===""){
 		alert("Ingresa un mensaje");
@@ -84,21 +84,35 @@ function procesaMensajeCesar(clave, lado){
 	 }
 else {
 
-	if (lado === 'izquierda'){
+		if (lado === 'derecha'){
+			let mensajeCifrado='';
+			for (let i=0; i< mensaje1_1.length; i++){
+				if (mensaje1_1.charAt(i) === 'z'){
+					temp = abecedario.abc.indexOf(0);
+					mensajeCifrado += abecedario.abc[temp + clave];
+					temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
+				}else{
+					
+					temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
+					mensajeCifrado += abecedario.abc[temp + clave];
+				}
+			}
+			console.log(mensajeCifrado);
+			return mensajeCifrado;
 
-		for (let i=0; i< mensaje1_1.length; i++){
-			 temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
-			 mensajeCifrado += abecedario.abc[temp + clave];
+		}else if(lado === 'izquierda'){
+			let mensajeCifrado2 = '';
+			for (let i=0; i< mensaje1_1.length; i++){
+				temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
+				mensajeCifrado2 += abecedario.abc[temp - clave];
 		}
-		console.log(mensajeCifrado);
+		console.log(mensajeCifrado2);
+		return mensajeCifrado2;
 
-	}else if(lado === 'derecha'){
-		console.log(mensaje1_1.length);
-	}
+		}
 
-} 
-
-}
+	} 
+}//ProcesaMensajeCesar()
 
 // Funcion CIFRADO CESAR
 function cifradoCesar(){
@@ -109,7 +123,10 @@ function cifradoCesar(){
 	izq_der = validarIzquierdaDerecha();
 	console.log(izq_der);
 	
-	procesaMensajeCesar(clave1,izq_der);
+	mensaje1 = procesaMensajeCesar(clave1,izq_der);
+
+	document.querySelector('.R_Cesar').innerHTML = `Mensaje cifrado: ${mensaje1}`;
+
 }
 // Funcion DESCIFRADO CESAR
 function desCesar(){
