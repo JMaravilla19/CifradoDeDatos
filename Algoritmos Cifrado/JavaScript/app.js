@@ -1,10 +1,3 @@
-//Objeto con Abecedarios, al derecho y al reves
-let abecedario = {
-	abc: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-
-	zyx: ['z', 'y','x','w','v','u','t','s','r','q','p','o','n','m','l','k','j','i','h','g','f','e','d','c','b','a']
-};
-
 //Variables Globales Algoritmo Cesar
 let clave1,  izq_der, mensaje1;
 
@@ -72,45 +65,44 @@ function validarIzquierdaDerecha(){
 //Funcion para procesar mensaje de CIFRADO de Cesar
 function procesaMensajeCesar(clave, lado){
  	let mensaje1_1 = 	document.getElementById('mensaje1').value
-	 mensaje1_1= mensaje1_1.toLowerCase();
-	 mensaje1_1 = mensaje1_1.split(" ").join('');
-	clave = clave - 1;
-	let temp;
-	
+	let letraAscii;
+	 //Texto ingresado por ususario
+	 mensaje1_1 = mensaje1_1.toLowerCase().split(" ");
 
 	 if(mensaje1_1===""){
 		alert("Ingresa un mensaje");
 		location.reload();
-	 }
-else {
+
+	 } else {
 
 		if (lado === 'derecha'){
-			let mensajeCifrado='';
-			for (let i=0; i< mensaje1_1.length; i++){
-				if (mensaje1_1.charAt(i) === 'z'){
-					temp = abecedario.abc.indexOf(0);
-					mensajeCifrado += abecedario.abc[temp + clave];
-					temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
-				}else{
+			console.log(mensaje1_1);
+
+			for ( i = 0; i < mensaje1_1.length; i++){
+
+				letraAscii = mensaje1_1[i].split("").charCodeAt(0);
+
+				if(letraAscii >= 97 && letraAscii <= 122){
+							
+					if(letraAscii + clave > 122){
+						letraAscii = 97 + (letraAscii - 122) + clave - 1;
+					}
 					
-					temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
-					mensajeCifrado += abecedario.abc[temp + clave];
-				}
-			}
-			console.log(mensajeCifrado);
-			return mensajeCifrado;
+					else{
+						letraAscii = letraAscii + clave;
+					}
+					
+				}//IF
+	
+			let cifrado = String.fromCharCode(letraAscii);
+			console.log(`Variable cifrado: ${cifrado}`);
+			return cifrado;
+			}//FOR
 
 		}else if(lado === 'izquierda'){
-			let mensajeCifrado2 = '';
-			for (let i=0; i< mensaje1_1.length; i++){
-				temp = abecedario.abc.indexOf(mensaje1_1.charAt(i));
-				mensajeCifrado2 += abecedario.abc[temp - clave];
+			
 		}
-		console.log(mensajeCifrado2);
-		return mensajeCifrado2;
-
-		}
-
+		
 	} 
 }//ProcesaMensajeCesar()
 
