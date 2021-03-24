@@ -1,5 +1,6 @@
 //Variables Globales Algoritmo Cesar
-let clave1,  izq_der, mensaje1;
+let clave1,  izq_der; 
+let mensaje1 = document.getElementById("R_Cesar");
 
 // Una vez que cargue el contenido de la pagina web, se ejecuta esto
 window.onload = function(){
@@ -64,11 +65,11 @@ function validarIzquierdaDerecha(){
 
 //Funcion para procesar mensaje de CIFRADO de Cesar
 function procesaMensajeCesar(clave, lado){
- 	let mensaje1_1 = 	document.getElementById('mensaje1').value
+ 	let mensaje1_1 = document.getElementById('mensaje1').value;
 	let letraAscii;
-	let cifrado=[];
+	let cifrado;
 	 //Texto ingresado por ususario
-	 mensaje1_1 = mensaje1_1.toLowerCase().split(" ");
+	//  mensaje1_1 = mensaje1_1.toLowerCase().split(" ");
 
 	 if(mensaje1_1===""){
 		alert("Ingresa un mensaje");
@@ -77,36 +78,45 @@ function procesaMensajeCesar(clave, lado){
 	 } else {
 
 		if (lado === 'derecha'){
-			console.log(mensaje1_1);
+			clave = clave - 1;
+			mensaje1 = mensaje1_1.split('').map(char=>{
 
-			for ( i = 0; i < mensaje1_1.length; i++){
-				for ( let j=0; j < mensaje1_1[i].length; j++ ){
+			let letraAscii = char.toLowerCase().charCodeAt(0);
+			if(letraAscii >= 97 && letraAscii <= 122){
 
-					console.log(mensaje1_1[i].charCodeAt(j));
-					letraAscii = mensaje1_1[i].charCodeAt(j);
-
-					if(letraAscii >= 97 && letraAscii <= 122){
-								
-						if(letraAscii + clave > 122){
-							letraAscii = 97 + (letraAscii - 122) + (clave - 1);
-						}
-						
-						else{
-							letraAscii = letraAscii + (clave -1);
-						}
-						
-					}//IF
-
-					 cifrado.push(String.fromCharCode(letraAscii));
+				if(letraAscii + clave > 122){
+					letraAscii= 97 + ( letraAscii - 122 ) + clave;
 				}
-			
+				else{
+					letraAscii = letraAscii + (clave);
+				}
+				
+			}
 	
-			console.log(`Variable cifrado: ${cifrado}`);
-			return cifrado.join('');
-			}//FOR
+			let cifrado = String.fromCharCode(letraAscii);
+			console.log(cifrado);
+			// return mayus ? cifrado.toUpperCase() : cifrado;
+			return cifrado;
+		}).join('');
 
 		}else if(lado === 'izquierda'){
-			
+			mensaje1 = mensaje1_1.split('').map(char=>{
+				// let mayus = (char === char.toUpperCase()) ? true : false;
+				let letraAscii = char.toLowerCase().charCodeAt(0);
+				if(letraAscii >= 97 && letraAscii <= 122){
+					
+					if(letraAscii - clave < 97){
+						letraAscii= 122 - (letraAscii - 97) - (clave - 2);
+
+					} else{
+						letraAscii = letraAscii - (clave-1);
+					}
+				}
+		
+				let cifrado = String.fromCharCode(letraAscii);
+				console.log(cifrado);
+				return cifrado;
+				}).join('');
 		}
 		
 	} 
@@ -120,15 +130,32 @@ function cifradoCesar(){
 
 	izq_der = validarIzquierdaDerecha();
 	console.log(izq_der);
-	
-	mensaje1 = procesaMensajeCesar(clave1,izq_der);
+	procesaMensajeCesar(clave1,izq_der);
 
 	document.querySelector('.R_Cesar').innerHTML = `Mensaje cifrado: ${mensaje1}`;
 
 }
+
+function procesaDescifradoCesar(clave, lado){
+	if (lado === 'izquierda'){
+		lado = 'derecha';
+	}else{
+		lado = 'izquierda';
+	}
+	
+	procesaMensajeCesar(clave, lado);
+	
+}
+
+
 // Funcion DESCIFRADO CESAR
 function desCesar(){
-	console.log("Clickeaste el boton");
+	clave1= processClave1();
+	izq_der = validarIzquierdaDerecha();
+
+	procesaDescifradoCesar(clave1, izq_der);
+	document.querySelector('.R_Cesar').innerHTML = `Mensaje cifrado: ${mensaje1}`;
+
 }
 
 // Funcion CIFRADO POLYBIOS
