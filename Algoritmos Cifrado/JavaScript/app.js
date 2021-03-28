@@ -1,7 +1,17 @@
 //Variables Globales Algoritmo Cesar
 let clave1,  izq_der; 
-let mensaje1 = document.getElementById("R_Cesar");
+let mensaje1;
 
+// variables globales algoritmo Polybios
+const abecedario = {
+	a:'11', b:'12', c: '13', d:'14', e:'15', f:'21', g:'22',
+	h:'23', i:'24', j:'24', k:'25', l:'31', m:'32', n:'33', o:'34', p:'35',
+	q:'41', r:'42', s:'43', t:'44', u:'45', v:'51', x:'52', w:'53', y:'54', z:'55'
+
+};
+let mensaje2;
+
+// 
 // Una vez que cargue el contenido de la pagina web, se ejecuta esto
 window.onload = function(){
 	//Evento que determina si se hizo click en el boton de CIFRADO de CESAR
@@ -44,6 +54,7 @@ function processClave1(){
 
 // Funcion para determinar si el ususario quiere recorrer el abecedario a la izquierda o derecha, si no se selecciona una opcion, arroja TypeError
 function validarIzquierdaDerecha(){
+
 	var radios = document.getElementsByName("izqDer");
     var radio_valido = false;
 
@@ -125,7 +136,7 @@ function procesaMensajeCesar(clave, lado){
 // Funcion CIFRADO CESAR
 function cifradoCesar(){
 	
-	clave1= processClave1();
+	clave1 = processClave1();
 	console.log(clave1);
 
 	izq_der = validarIzquierdaDerecha();
@@ -154,13 +165,30 @@ function desCesar(){
 	izq_der = validarIzquierdaDerecha();
 
 	procesaDescifradoCesar(clave1, izq_der);
-	document.querySelector('.R_Cesar').innerHTML = `Mensaje cifrado: ${mensaje1}`;
+	document.querySelector('.R_Cesar').innerHTML = `Mensaje descifrado: ${mensaje1}`;
 
 }
 
 // Funcion CIFRADO POLYBIOS
 function cifradoPoly(){
+	let cifrado;
+	let mensaje2_1 = document.getElementById("mensaje2").value;
+
+	if(mensaje2_1===""){
+		alert("Ingresa un mensaje");
+		location.reload();
+
+	 }else{
+		// Iterar sobre el objeto que incluye todo el abecedario y sus valores.
+		for (const property in abecedario){
+			
+			
+		
+
+		}
+	 }
 	console.log("Clickeaste el boton");
+
 }
 
 // Funcion DESCIFRADO POLYBIOS
