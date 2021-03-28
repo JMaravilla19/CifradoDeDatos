@@ -3,15 +3,24 @@ let clave1,  izq_der;
 let mensaje1;
 
 // variables globales algoritmo Polybios
+/**
+ * En este caso, la letra k tiene asignado el valor 26, y aunque las letra I - J deberian
+ * tener el mismo valor (24) decidimos asignarle uno distinto para que no de problemas
+ * al momento de cifrar - descifrar
+ *  */ 
+ 
 const abecedario = {
 	a:'11', b:'12', c: '13', d:'14', e:'15', f:'21', g:'22',
-	h:'23', i:'24', j:'24', k:'25', l:'31', m:'32', n:'33', o:'34', p:'35',
+	h:'23', i:'24', j:'25', k:'26', l:'31', m:'32', n:'33', o:'34', p:'35',
 	q:'41', r:'42', s:'43', t:'44', u:'45', v:'51', x:'52', w:'53', y:'54', z:'55'
 
 };
 let mensaje2;
 
-// 
+// Variables Globales algoritmo VIGENERE
+let mensaje3;
+
+ 
 // Una vez que cargue el contenido de la pagina web, se ejecuta esto
 window.onload = function(){
 	//Evento que determina si se hizo click en el boton de CIFRADO de CESAR
@@ -173,6 +182,7 @@ function desCesar(){
 function cifradoPoly(){
 	let cifrado='';
 	let mensaje2_1 = document.getElementById("mensaje2").value;
+	let temporal;
 
 	if(mensaje2_1===""){
 		alert("Ingresa un mensaje");
@@ -181,6 +191,7 @@ function cifradoPoly(){
 	 }else{
 		// Iterar sobre el objeto que incluye todo el abecedario y sus valores.
 			mensaje2_1 = mensaje2_1.split('');
+			console.log(mensaje2_1);
 
 				for(let i=0; i < mensaje2_1.length; i++ ){
 					// console.log(mensaje2_1[i]);
@@ -205,27 +216,45 @@ function cifradoPoly(){
 
 }
 
-// Funcion para separar los numeros en arreglo de pares
-//Algoritomo POLYBIOS
-function SepEnPares(arr, len) {
-	let chunks = [], i = 0, n = arr.length;
-	while (i < n) {
-	  chunks.push(arr.slice(i, i += len));
-	}
 
-	return chunks;
-  }
 
 // Funcion DESCIFRADO POLYBIOS
 function DesPoly(){
 	let mensaje2_2 = document.getElementById("mensaje2").value;
+	let arreglo=[];
+	let temporal;
+	let descifrado = '';
 	//Se ingresa como tipo string el mensaje cifrado
 	console.log (typeof mensaje2_2);
 	
 	//Retorna arreglos con pares.
-	mensaje2_2 = SepEnPares(mensaje2_2.split(""),2);
-
+	// mensaje2_2 = SepEnPares(mensaje2_2.split(""),2);
 	
+
+	// genera un arreglo con los pares de numeros.
+	for (let i=0; i < mensaje2_2.length; i++){
+		
+		temporal = mensaje2_2.charAt(i) + mensaje2_2.charAt(i+1);
+		arreglo.push(temporal);
+		temporal = '';
+		i++;
+		console.log(arreglo);
+
+	}
+	
+	// Itera sobre el arreglo anterior y las letras del objeto abecedario
+	// Para buscar que valores hacen match
+	for ( let i = 0; i < arreglo.length; i++ ){
+
+		for (letras in abecedario){
+			if ( abecedario[ letras ] === arreglo[i]){
+				descifrado += letras;
+			}
+		}
+
+	}
+	
+	mensaje2 = descifrado;
 	console.log(mensaje2_2);
 
 	
@@ -237,6 +266,7 @@ function DesPoly(){
 
 // Funcion CIFRADO VIGENERE
 function cifradoVen(){
+	
 	console.log("Clickeaste el boton");
 }
 
