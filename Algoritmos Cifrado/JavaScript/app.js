@@ -171,7 +171,7 @@ function desCesar(){
 
 // Funcion CIFRADO POLYBIOS
 function cifradoPoly(){
-	let cifrado;
+	let cifrado='';
 	let mensaje2_1 = document.getElementById("mensaje2").value;
 
 	if(mensaje2_1===""){
@@ -180,20 +180,59 @@ function cifradoPoly(){
 
 	 }else{
 		// Iterar sobre el objeto que incluye todo el abecedario y sus valores.
-		for (const property in abecedario){
-			
-			
-		
+			mensaje2_1 = mensaje2_1.split('');
 
-		}
-	 }
-	console.log("Clickeaste el boton");
+				for(let i=0; i < mensaje2_1.length; i++ ){
+					// console.log(mensaje2_1[i]);
+
+					for (const letras in abecedario){
+					
+						if (letras === mensaje2_1[i]){
+
+							cifrado += abecedario[letras];
+							console.log(letras);
+							
+						}
+					}
+
+				}
+				// console.log(mensaje2_1);
+				// console.log(cifrado);
+				mensaje2 = cifrado;
+	 	}
+	
+	document.querySelector(".R_Polybios").innerHTML = `Mensaje cifrado: ${mensaje2}`;
 
 }
 
+// Funcion para separar los numeros en arreglo de pares
+//Algoritomo POLYBIOS
+function SepEnPares(arr, len) {
+	let chunks = [], i = 0, n = arr.length;
+	while (i < n) {
+	  chunks.push(arr.slice(i, i += len));
+	}
+
+	return chunks;
+  }
+
 // Funcion DESCIFRADO POLYBIOS
 function DesPoly(){
-	console.log("Clickeaste el boton");
+	let mensaje2_2 = document.getElementById("mensaje2").value;
+	//Se ingresa como tipo string el mensaje cifrado
+	console.log (typeof mensaje2_2);
+	
+	//Retorna arreglos con pares.
+	mensaje2_2 = SepEnPares(mensaje2_2.split(""),2);
+
+	
+	console.log(mensaje2_2);
+
+	
+	
+	
+	document.querySelector(".R_Polybios").innerHTML = `Mensaje descifrado: ${mensaje2}`;
+
 }
 
 // Funcion CIFRADO VIGENERE
