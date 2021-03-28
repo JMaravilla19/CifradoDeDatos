@@ -19,7 +19,7 @@ let mensaje2;
 
 // Variables Globales algoritmo VIGENERE
 let mensaje3;
-
+let claveSecreta;
  
 // Una vez que cargue el contenido de la pagina web, se ejecuta esto
 window.onload = function(){
@@ -167,7 +167,6 @@ function procesaDescifradoCesar(clave, lado){
 	
 }
 
-
 // Funcion DESCIFRADO CESAR
 function desCesar(){
 	clave1= processClave1();
@@ -182,6 +181,7 @@ function desCesar(){
 function cifradoPoly(){
 	let cifrado='';
 	let mensaje2_1 = document.getElementById("mensaje2").value;
+	mensaje2_1 = mensaje2_1.toLowerCase();
 	let temporal;
 
 	if(mensaje2_1===""){
@@ -192,7 +192,7 @@ function cifradoPoly(){
 		// Iterar sobre el objeto que incluye todo el abecedario y sus valores.
 			mensaje2_1 = mensaje2_1.split('');
 			console.log(mensaje2_1);
-
+				
 				for(let i=0; i < mensaje2_1.length; i++ ){
 					// console.log(mensaje2_1[i]);
 
@@ -216,8 +216,6 @@ function cifradoPoly(){
 
 }
 
-
-
 // Funcion DESCIFRADO POLYBIOS
 function DesPoly(){
 	let mensaje2_2 = document.getElementById("mensaje2").value;
@@ -226,9 +224,6 @@ function DesPoly(){
 	let descifrado = '';
 	//Se ingresa como tipo string el mensaje cifrado
 	console.log (typeof mensaje2_2);
-	
-	//Retorna arreglos con pares.
-	// mensaje2_2 = SepEnPares(mensaje2_2.split(""),2);
 	
 
 	// genera un arreglo con los pares de numeros.
@@ -266,7 +261,25 @@ function DesPoly(){
 
 // Funcion CIFRADO VIGENERE
 function cifradoVen(){
-	
+	let mensaje3_1 = document.getElementById('mensaje3').value;
+	claveSecreta = document.getElementById('claveVigenere').value;
+
+	//Validar que se ingreso una clave
+	if (claveSecreta === ''){
+		alert("Ingresa una clave.");
+		location.reload();
+	}else if ( claveSecreta.includes('10')){
+		alert("No puedes ingresar numeros");
+		location.reload();
+
+	}else{
+		console.log(claveSecreta);
+		
+
+	}
+
+
+	document.querySelector(".R_Vigenere").innerHTML = `Mensaje descifrado: ${mensaje3}`;
 	console.log("Clickeaste el boton");
 }
 
