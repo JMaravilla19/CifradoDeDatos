@@ -277,9 +277,22 @@ function cifradoVen(){
 	}else{
 		
 		console.log(claveSecreta);
+
 		if (claveSecreta.length < mensaje3_1.length){
-			let mensajeUnido = mensaje3_1;			
-			letrasDif = mensaje3_1.length -  claveSecreta;
+			let mensajeUnido = mensaje3_1;	
+			mensajeUnido = mensajeUnido.split(" ");
+			mensajeUnido = mensajeUnido.join("");
+
+					
+			letrasDif = mensajeUnido.length -  claveSecreta.length;
+			claveSecreta = claveSecreta.split("");
+
+			for( let i = 0; i < letrasDif.length; i++){
+				claveSecreta.push(claveSecreta[i]); 
+
+			}
+
+			console.log(claveSecreta);
 			console.log(mensajeUnido);
 			console.log(letrasDif);
 		}	
