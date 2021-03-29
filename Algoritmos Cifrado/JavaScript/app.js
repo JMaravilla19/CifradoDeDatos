@@ -114,8 +114,8 @@ function procesaMensajeCesar(clave, lado){
 	
 			let cifrado = String.fromCharCode(letraAscii);
 			console.log(cifrado);
-			// return mayus ? cifrado.toUpperCase() : cifrado;
 			return cifrado;
+
 		}).join('');
 
 		}else if(lado === 'izquierda'){
@@ -181,7 +181,7 @@ function cifradoPoly(){
 	let cifrado='';
 	let mensaje2_1 = document.getElementById("mensaje2").value;
 	mensaje2_1 = mensaje2_1.toLowerCase();
-	let temporal;
+	
 
 	if(mensaje2_1===""){
 		alert("Ingresa un mensaje");
@@ -332,7 +332,6 @@ function cifradoVen(){
 	console.log("Clickeaste el boton");
 }
 
-// Funcion DESCIFRADO VIGENERE
 
 function modNeg(n1, n2){
   var mod = n1;
@@ -342,6 +341,7 @@ function modNeg(n1, n2){
   return mod;
 }
 
+// Funcion DESCIFRADO VIGENERE
 function desVen() {
   var SIZE_ALF = 26;
   
