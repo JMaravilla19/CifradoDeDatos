@@ -18,8 +18,7 @@ const abecedario = {
 let mensaje2;
 
 // Variables Globales algoritmo VIGENERE
-let mensaje3;
-let claveSecreta;
+let mensaje3 ='';
  
 // Una vez que cargue el contenido de la pagina web, se ejecuta esto
 window.onload = function(){
@@ -259,52 +258,131 @@ function DesPoly(){
 
 }
 
+// Este ultimo no lo hicimos por nuestra cuenta, viene del siguiente link:
+// https://codepen.io/alu0100600674/pen/EjKjXO
 // Funcion CIFRADO VIGENERE
 function cifradoVen(){
 	let mensaje3_1 = document.getElementById('mensaje3').value;
-	claveSecreta = document.getElementById('claveVigenere').value;
+	clave = document.getElementById('claveVigenere').value;
+	//Para identificar si se ingreso un numero en la clave
 	let tieneNum= /\d/;
-	let letrasDif;
+	//Conocer tamaño de la clave y el mensaje en caracteres
+	let SIZE_ALF = 26;
+	let size_clave = clave.length;
+  let size_mensaje = mensaje3_1.length;
+	
+  //Abecedario
+  let alfabeto = new Array();
+
+  //Valores clave
+  let valores_clave = new Array();
+
+  //Variable cifrado
+  let mensaje_cifrado = new Array();
 
 	//Validar que se ingreso una clave
-	if (claveSecreta === ''){
+	if (clave === ''){
 		alert("Ingresa una clave.");
 		location.reload();
-	}else if ( tieneNum.test(claveSecreta)){
+	
+	//Verificar si se ingresaron numeros
+	}else if ( tieneNum.test(clave)){
 		alert("No puedes ingresar numeros");
 		location.reload();
 
 	}else{
+	
+		// Guardar alfabeto
+		for(i = 0; i < SIZE_ALF; i++){
+		alfabeto[i] = String.fromCharCode(65 + i);
+		}
 		
-		console.log(claveSecreta);
-
-		if (claveSecreta.length < mensaje3_1.length){
-			let mensajeUnido = mensaje3_1;	
-			mensajeUnido = mensajeUnido.split(" ");
-			mensajeUnido = mensajeUnido.join("");
-
-					
-			letrasDif = mensajeUnido.length -  claveSecreta.length;
-			claveSecreta = claveSecreta.split("");
-
-			for( let i = 0; i < letrasDif.length; i++){
-				claveSecreta.push(claveSecreta[i]); 
-
+		// Guardar valores de la clave
+		for(i = 0; i < size_clave; i++){
+		for(j = 0; j < SIZE_ALF; j++){
+			if(clave[i] == alfabeto[j]){
+				valores_clave[i] = j;
 			}
+		}
+		}
+		
+		// Cifrar
+		for(i = 0; i < size_mensaje; i++){
+		let pos_letra;
+		for(j = 0; j < SIZE_ALF; j++){
+			if(mensaje3_1[i] == alfabeto[j]){
+			pos_letra = j;
+			}
+		}
+		mensaje_cifrado[i] = alfabeto[(valores_clave[i%size_clave] + pos_letra) % SIZE_ALF];
+		}
+		
+		console.log(mensaje_cifrado);
 
-			console.log(claveSecreta);
-			console.log(mensajeUnido);
-			console.log(letrasDif);
-		}	
+	}// else
 
+	// Escribir el resultado en el HTML
+	div = document.getElementById("RVigenere");
+	
+	for(i = 0; i < size_mensaje; i++){
+	  mensaje3 += mensaje_cifrado[i];
 	}
+	div.textContent = `Mensaje cifrado: ${mensaje3}`;
 
-
-	document.querySelector(".R_Vigenere").innerHTML = `Mensaje descifrado: ${mensaje3}`;
 	console.log("Clickeaste el boton");
 }
 
 // Funcion DESCIFRADO VIGENERE
-function desVen(){
-	console.log("Clickeaste el boton");
+
+function modNeg(n1, n2){
+  var mod = n1;
+  while(mod < 0){
+    mod += n2;
+  }
+  return mod;
+}
+
+function desVen() {
+  var SIZE_ALF = 26;
+  
+  var clave = document.getElementById("claveVigenere").value;
+  var size_clave = clave.length;
+  var mensaje = document.getElementById("mensaje3").value;
+  var size_mensaje = mensaje.length;
+  
+  // Guardar alfabeto
+	var alfabeto = new Array();
+  for(i = 0; i < SIZE_ALF; i++){
+    alfabeto[i] = String.fromCharCode(65 + i);
+  }
+  
+  // Guardar valores de la clave
+  var valores_clave = new Array();
+  for(i = 0; i < size_clave; i++){
+    for(j = 0; j < SIZE_ALF; j++){
+      if(clave[i] == alfabeto[j]){
+      	valores_clave[i] = j;
+      }
+    }
+  }
+  
+  // Descifrar
+  var mensaje_descifrado = new Array();
+  for(i = 0; i < size_mensaje; i++){
+    var pos_letra;
+    for(j = 0; j < SIZE_ALF; j++){
+      if(mensaje[i] == alfabeto[j]){
+        pos_letra = j;
+      }
+    }
+    mensaje_descifrado[i] = alfabeto[modNeg((pos_letra - valores_clave[i%size_clave]), SIZE_ALF)];
+  }
+  
+  // Escribir el resultado en el HTML
+  div = document.getElementById("RVigenere");
+  mensaje3 = '';
+  for(i = 0; i < size_mensaje; i++){
+    mensaje3 += mensaje_descifrado[i];
+  }
+  div.textContent = 'Mensaje descifrado: ' + mensaje3;
 }
