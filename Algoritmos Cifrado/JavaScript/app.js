@@ -263,18 +263,26 @@ function DesPoly(){
 function cifradoVen(){
 	let mensaje3_1 = document.getElementById('mensaje3').value;
 	claveSecreta = document.getElementById('claveVigenere').value;
+	let tieneNum= /\d/;
+	let letrasDif;
 
 	//Validar que se ingreso una clave
 	if (claveSecreta === ''){
 		alert("Ingresa una clave.");
 		location.reload();
-	}else if ( claveSecreta.includes('10')){
+	}else if ( tieneNum.test(claveSecreta)){
 		alert("No puedes ingresar numeros");
 		location.reload();
 
 	}else{
-		console.log(claveSecreta);
 		
+		console.log(claveSecreta);
+		if (claveSecreta.length < mensaje3_1.length){
+			let mensajeUnido = mensaje3_1;			
+			letrasDif = mensaje3_1.length -  claveSecreta;
+			console.log(mensajeUnido);
+			console.log(letrasDif);
+		}	
 
 	}
 
