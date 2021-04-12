@@ -63,10 +63,10 @@ function processClave1(){
 // Funcion para determinar si el ususario quiere recorrer el abecedario a la izquierda o derecha, si no se selecciona una opcion, arroja TypeError
 function validarIzquierdaDerecha(){
 
-	var radios = document.getElementsByName("izqDer");
-    var radio_valido = false;
+	let radios = document.getElementsByName("izqDer");
+    let radio_valido = false;
 
-    var i = 0;
+    let i = 0;
     while (!radio_valido && i < radios.length) {
         if (radios[i].checked){
 			radio_valido = document.querySelector('input[name="izqDer"]:checked').value;
@@ -97,21 +97,20 @@ function procesaMensajeCesar(clave, lado){
 	 } else {
 
 		if (lado === 'derecha'){
-			clave = clave - 1;
 			mensaje1 = mensaje1_1.split('').map(char=>{
 
 			let letraAscii = char.toLowerCase().charCodeAt(0);
 			if(letraAscii >= 97 && letraAscii <= 122){
 
-				if(letraAscii + clave > 122){
-					letraAscii= 97 + ( letraAscii - 122 ) + clave;
+				if(letraAscii + (clave - 1) > 122){
+					letraAscii= 97 + ( letraAscii - 122 ) + (clave - 1);
 				}
 				else{
-					letraAscii = letraAscii + (clave);
+					letraAscii = letraAscii + (clave - 1);
 				}
 				
 			}
-	
+			//Devolver cadena con funcion estatica desde valores UNICODE
 			let cifrado = String.fromCharCode(letraAscii);
 			console.log(cifrado);
 			return cifrado;
@@ -124,8 +123,8 @@ function procesaMensajeCesar(clave, lado){
 				let letraAscii = char.toLowerCase().charCodeAt(0);
 				if(letraAscii >= 97 && letraAscii <= 122){
 					
-					if(letraAscii - clave < 97){
-						letraAscii= 122 - (letraAscii - 97) - (clave - 2);
+					if(letraAscii - (clave - 1) < 97){
+						letraAscii= 122 - (letraAscii - 97) - (clave - 1);
 
 					} else{
 						letraAscii = letraAscii - (clave-1);
